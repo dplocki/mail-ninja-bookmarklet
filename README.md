@@ -15,3 +15,7 @@ npx gulp
 ```
 
 See the `./out` directory.
+
+## Fun fact 
+
+I have tested the ChatGPT during development. Among other things, it suggest the name of the repository.
