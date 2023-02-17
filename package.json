@@ -1,0 +1,30 @@
+{
+  "name": "mail-ninja-bookmarklet",
+  "version": "0.1.0",
+  "description": "The bookmarklet for selecting the unread messages",
+  "main": "code.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dplocki/mail-ninja-bookmarklet.git"
+  },
+  "keywords": [
+    "bookmark",
+    "bookmarklet",
+    "email",
+    "unread"
+  ],
+  "author": "Dawid Płocki",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dplocki/mail-ninja-bookmarklet/issues"
+  },
+  "homepage": "https://github.com/dplocki/mail-ninja-bookmarklet#readme",
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-uglify": "^3.0.2",
+    "gulp-wrap": "^0.15.0"
+  }
+}
