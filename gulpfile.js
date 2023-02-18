@@ -4,7 +4,7 @@ const uglify = require('gulp-uglify');
 
 gulp.task('default', function() {
   return gulp.src('code.js')
-    .pipe(wrap('javascript:(<%= contents %>());'))
     .pipe(uglify())
+    .pipe(wrap('javascript:(<%= contents %>(location.href));'))
     .pipe(gulp.dest('out'));
 });
