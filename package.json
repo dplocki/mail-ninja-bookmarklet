@@ -3,8 +3,7 @@
   "version": "0.1.0",
   "description": "The bookmarklet for selecting the unread messages",
   "main": "code.js",
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dplocki/mail-ninja-bookmarklet.git"
@@ -21,10 +20,12 @@
     "url": "https://github.com/dplocki/mail-ninja-bookmarklet/issues"
   },
   "homepage": "https://github.com/dplocki/mail-ninja-bookmarklet#readme",
-  "dependencies": {
+  "devDependencies": {
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
+    "gulp-typescript": "^6.0.0-alpha.1",
     "gulp-uglify": "^3.0.2",
-    "gulp-wrap": "^0.15.0"
+    "gulp-wrap": "^0.15.0",
+    "typescript": "^4.9.5"
   }
 }
