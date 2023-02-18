@@ -1,4 +1,4 @@
-# Mail Ninja Bookmarklet
+# 🥷 Mail Ninja Bookmarklet
 
 ## Running
 
