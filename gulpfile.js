@@ -7,6 +7,6 @@ gulp.task('default', function() {
   return gulp.src('src/code.ts')
     .pipe(ts())
     .pipe(uglify())
-    .pipe(wrap('javascript:(<%= contents %>(location.href));'))
+    .pipe(wrap('javascript:(function(){<%= contents %>})()'))
     .pipe(gulp.dest('out'));
 });
