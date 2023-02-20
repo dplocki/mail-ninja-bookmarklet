@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "The bookmarklet for selecting the unread messages",
   "main": "src/code.ts",
-  "scripts": {},
+  "scripts": {
+    "build": "gulp"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dplocki/mail-ninja-bookmarklet.git"
