@@ -11,7 +11,7 @@ npm ci
 Then run:
 
 ```sh
-npx gulp
+npm run build
 ```
 
 See the `./out` directory.
