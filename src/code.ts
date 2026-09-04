@@ -8,10 +8,9 @@ interface IEmail {
 type EmailReaderFunction = (document: Document) => IEmail[];
 
 function getInteriaEmails(document: Document): IEmail[] {
-  return Array.from(document.getElementsByClassName('msglist-item'))
-    .filter((item: Element) => !Array.from(item.classList).includes('msglist-item--seen'))
+  return Array.from(document.querySelectorAll(".ml-mail-item:not(.msglist-item--seen)"))
     .map<IEmail>((item: Element) => ({
-      selector: item.getElementsByTagName('label')[0] as HTMLElement
+      selector: item.querySelector("label") as HTMLElement
     }));
 }
 
