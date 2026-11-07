@@ -4,8 +4,10 @@
   "description": "The bookmarklet for selecting the unread messages",
   "main": "src/code.ts",
   "scripts": {
-    "build": "node build.js"
+    "build": "node build.js",
+    "build:dev": "node build.js dev"
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dplocki/mail-ninja-bookmarklet.git"

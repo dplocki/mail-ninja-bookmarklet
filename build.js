@@ -1,32 +1,64 @@
-const esbuild = require('esbuild');
-const fs = require('fs');
-const path = require('path');
-const packageJson = require('./package.json');
+import { build as _build } from 'esbuild';
+import { writeFile, readFile, mkdir } from 'fs/promises';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
 
-async function build() {
-  const result = await esbuild.build({
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+
+async function compileTypeScript(options) {
+  const result = await _build({
     entryPoints: ['src/code.ts'],
-    bundle: true,
-    minify: true,
     write: false,
-    format: 'iife',
+    bundle: true,
+    ...options,
   });
 
-  const jsCode = result.outputFiles[0].text;
-  const templatePath = path.join(__dirname, 'src/index.html');
-  const html = fs.readFileSync(templatePath, 'utf-8')
-    .replace('<%= content %>', jsCode)
-    .replace('<%= version %>', packageJson.version);
-
-  const outDir = path.join(__dirname, 'out');
-  if (!fs.existsSync(outDir)) {
-    fs.mkdirSync(outDir, { recursive: true });
-  }
-
-  fs.writeFileSync(path.join(outDir, 'index.html'), html);
+  return result.outputFiles[0].text;
 }
 
-build()
+async function createOutputDirectory() {
+  const outDir = join(__dirname, 'out');
+  await mkdir(outDir, { recursive: true });
+}
+
+async function saveOutput(fileName, output) {
+  const outDir = join(__dirname, 'out');
+
+  await writeFile(join(outDir, fileName), output);
+}
+
+async function fillTemplate(jsCode) {
+  const packageJson = JSON.parse(await readFile(join(__dirname, 'package.json'), 'utf-8'));
+  const templatePath = join(__dirname, 'src/index.html');
+
+  return (await readFile(templatePath, 'utf-8'))
+    .replace('<%= content %>', jsCode)
+    .replace('<%= version %>', packageJson.version);
+}
+
+async function build() {
+  await createOutputDirectory();
+  const output = await fillTemplate(await compileTypeScript({
+    format: 'iife',
+    minify: true,
+  }));
+  await saveOutput('index.html', output);
+}
+
+async function buildDev() {
+  await createOutputDirectory();
+  const output = await compileTypeScript({
+    format: 'esm',
+  });
+  await saveOutput('code.js', output);
+}
+
+(process.argv[2] === 'dev'
+  ? buildDev
+  : build
+)()
   .then(() => {
     console.log('Build completed successfully.');
   }).catch((err) => {
