@@ -4,7 +4,7 @@
   "description": "The bookmarklet for selecting the unread messages",
   "main": "src/code.ts",
   "scripts": {
-    "build": "gulp"
+    "build": "node build.js"
   },
   "repository": {
     "type": "git",
@@ -15,7 +15,6 @@
     "bookmarklet",
     "emails",
     "unread",
-    "gulp",
     "typescript",
     "web",
     "favelet",
@@ -29,12 +28,7 @@
   },
   "homepage": "https://github.com/dplocki/mail-ninja-bookmarklet#readme",
   "devDependencies": {
-    "gulp": "^5.0.1",
-    "gulp-concat": "^2.6.1",
-    "gulp-rename": "^2.1.0",
-    "gulp-typescript": "^6.0.0-alpha.1",
-    "gulp-uglify": "^3.0.2",
-    "gulp-wrap": "^0.15.0",
-    "typescript": "^4.9.5"
+    "esbuild": "^0.28.2",
+    "typescript": "^7.0.2"
   }
 }
